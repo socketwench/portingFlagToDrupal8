@@ -110,14 +110,30 @@
                 </section>
             </section>
             <section class="stack" data-id="2eda12688c9e358234a752eaeea8da8b">
-                <section class="" data-id="0fb5afc1a693ec458d49695caf7040e6" data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                <section class="" data-id="0fb5afc1a693ec458d49695caf7040e6">
                     <h1>What is Flag?</h1>
+                    <img src="images/flaggingUI.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/node0.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/node1.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/node2.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/node3.png" />
+                </section>
+                <section>
+                    <h1>Flag Module Defined</h1>
                     <div>
                         <blockquote> Enables administrators to define boolean fields that can be attached to site content which each user may set or unset.</blockquote>
                     </div>
-                    <br>
-                    <div>https://www.drupal.org/project/flag<br>
-                    </div>
+                </section>
+                <section>
+                    <img src="images/flagProcess.png" />
                 </section>
                 <section class="" data-id="79a119dadbe7b01ac987f08f84358661">
                     <h2>Flags</h2>
@@ -135,34 +151,6 @@
                     </p>
                     <p>May be fielded (7.x-3.x)</p>
                     <br>
-                </section>
-                <section class="" data-id="c9e87eba19fc79e9ac5eab68765a111c">
-                    <h2>Flag Properties</h2>
-                    <div>
-                        <table>
-                            <tbody>
-                            <tr>
-                                <td>Label</td>
-                                <td>Machine Name</td>
-                            </tr>
-                            <tr>
-                                <td>Flag Link Text</td>
-                                <td>Unflag Link Text</td>
-                            </tr>
-                            <tr>
-                                <td>Flag Type</td>
-                                <td>Link Type</td>
-                            </tr>
-                            <tr>
-                                <td>Is Global</td>
-                                <td>Permissions</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-
-
                 </section>
                 <section class="" data-id="b186933e1dff24329b808322ff713b27">
                     <h2>Flaggings</h2>
@@ -183,17 +171,6 @@
                     <p>
                         <br>
                     </p>
-                </section>
-                <section class="" data-id="aa9dc378b6e7c0f8f0a4521e9917452a">
-                    <h2>Bundles</h2>
-                    <div>Content Type is to a Node</div>
-                    <div>Flag is to a Flagging</div>
-                    <div>
-                        <br>
-                    </div>
-                    <div>
-                        <br>
-                    </div>
                 </section>
                 <section class="" data-id="d00f04a0006edcae4f6a919530c0afc8">
                     <h2>Flaggables</h2>
@@ -222,6 +199,9 @@
                     <div>Entity support was refactored in</div>
                     <div>OOP was used, but...</div>
                 </section>
+                <section>
+                    <img src="images/theBlob.jpg" />
+                </section>
                 <section class="" data-id="cc5e3b99b3f344d317d71c9fda057f31">
                     <h2>How PHP4 Classes look today</h2>
                     <div>Weird factory methods</div>
@@ -234,9 +214,12 @@
 </code></pre>
                     </div>All methods were public<br>
                     <div>All class variables were public</div>
+                    <div>Basically, a big blob of functions</div>
                 </section>
-                <section>
-                    <img src="images/theBlob.jpg" />
+            </section>
+            <section class="stack" data-id="e75ea9ffe1619a7d7bfff7cd6a083998">
+                <section class="" data-id="0463a0ff412280ac978daf97c6bc57a6" data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>Where to start?</h1>
                 </section>
                 <section class="" data-id="3de099415b38ee21de0bf16301f9683c">
                     <h2>Question all the things!</h2>
@@ -244,11 +227,6 @@
                         <img src="images/questionAllTheThigns.png" style="width: 684.7110872250407px; height: 460.39070419235867px; max-height: none; max-width: none;">
                         <br>
                     </div>
-                </section>
-            </section>
-            <section class="stack" data-id="e75ea9ffe1619a7d7bfff7cd6a083998">
-                <section class="" data-id="0463a0ff412280ac978daf97c6bc57a6">
-                    <h1>Where to start?</h1>
                 </section>
                 <section class="" data-id="0b2785293e4c36b618e3fa0237f11cfe" data-background-color="rgba( 255, 255, 255, 0.6 )">
                     <h2>Set some expectations</h2>
@@ -332,22 +310,22 @@
                     <h2>flag.schema.yml</h2>
                     <div>&lt;moduleRoot&gt;/config/schema/</div>
                     <div>
-<pre><code> flag.flag.*:
+<pre><code>flag.flag.*:
     type: config_entity
     label: 'Flag'
     mapping:
-    id:
-    type: string
-    label: 'Flag identifier'
-    is_global:
-    type: boolean
-    label: 'Is flag global'
-    flag_short:
-    type: string
-    label: 'Flag Link Text'
-    unflag_short:
-    type: string
-    label: 'Unflag Link Text'
+        id:
+            type: string
+            label: 'Flag identifier'
+        is_global:
+            type: boolean
+            label: 'Is flag global'
+        flag_short:
+            type: string
+            label: 'Flag Link Text'
+        unflag_short:
+            type: string
+            label: 'Unflag Link Text'
 </code></pre>
                     </div>
                     <font style="font-size: 24px;">(above is just a sample)</font>
@@ -360,27 +338,6 @@
                     <div>
                         <br>
                     </div>
-                </section>
-                <section class="" data-id="796cdb5637978fc09cd10c10817ccac8">
-                    <h2>Flag class variables</h2>
-                    <div>
-<pre><code>class Flag extends ConfigEntityBase implements FlagInterface {
-    public $id;
-    public $uuid;
-    public $entity_type = NULL;
-    public $label;
-    protected $is_global = FALSE;
-    protected $enabled = TRUE;
-    public $types = array();
-    public $flag_short = '';
-    public $flag_long = '';
-    public $flag_message = '';
-    public $unflag_short = '';
-    public $unflag_long = '';
-    public $unflag_message = '';
-    }</code></pre>
-                    </div>
-                    <br>
                 </section>
                 <section class="" data-id="47aa554dbe9bbbed9f8139d1eff34185">
                     <h2>Getters and Setters</h2>
@@ -400,6 +357,18 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
             <section class="stack" data-id="dbf16219b934b17c49fb58f8774ddf7f">
                 <section class="" data-id="622a46b8c7bef9ee899e130e624cbac7" data-background-image="images/flagOnD8-background.png" data-background-size="contain">
                     <h1>Plugging Flag Entity Into Drupal</h1>
+                </section>
+                <section data-transition="none">
+                    <img src="images/annotation1.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/annotation2.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/annotation3.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/annotation4.png" />
                 </section>
                 <section class="" data-id="7ea780f7a0e5b553ea3bd0c673063fe7">
                     <h2>Annotations</h2>
@@ -422,23 +391,19 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
     label = @Translation("Flag"),
     admin_permission = "administer flags",
     controllers = {
-    "list_builder" = "Drupal\flag\Controller\FlagListController",
-    "form" = {
-    "add" = "Drupal\flag\Form\FlagAddForm",
-    "edit" = "Drupal\flag\Form\FlagEditForm",
-    "delete" = "Drupal\flag\Form\FlagDeleteForm"
-    }
-    },
-    bundle_of = "flagging",
-    entity_keys = {
-    "id" = "id",
-    "label" = "label",
+        "list_builder" = "Drupal\flag\Controller\FlagListController",
+        "form" = {
+            "add" = "Drupal\flag\Form\FlagAddForm",
+            "edit" = "Drupal\flag\Form\FlagEditForm",
+            "delete" = "Drupal\flag\Form\FlagDeleteForm"
+        }
     },
     links = {
-    "edit-form" = "flag.edit",
-    "delete-form" = "flag.delete"
+        "edit-form" = "flag.edit",
+        "delete-form" = "flag.delete"
     }
-    )</code></pre>
+)</code></pre>
+                        <div>(Again, only a sample)</div>
                     </div>
                     <br>
 
