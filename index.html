@@ -285,10 +285,8 @@
                 <section class="" data-id="79aaf1914acbbaa6830c63b8f4922886">
                     <h2>Configuration Entities</h2>
                     <div>Designed for administrator-defined structures</div>
-                    <div>
-                        <span>Data my be exported to YAML</span>
-                        <br>
-                    </div>
+                    <div>Data my be exported to YAML</div>
+                    <div>It's structure, not data</div>
                 </section>
                 <section class="" data-id="815140d3e93d645da2b12cab3f7fd880">
                     <h2>ConfigEntityBase</h2>
@@ -335,23 +333,23 @@
                     <h2>Defining Class Variables</h2>
                     <div>Best practice is to match your schema</div>
                     <div>Code completion in your IDE</div>
+                    <div>Easiest place to document schema</div>
                     <div>
                         <br>
                     </div>
                 </section>
                 <section class="" data-id="47aa554dbe9bbbed9f8139d1eff34185">
-                    <h2>Getters and Setters</h2>
+                    <h2>Getters and Setters<br>for Schema Variables</h2>
                     <div>Create for protected class vars</div>
                     <div>Don't bother for public class vars</div>
                 </section>
                 <section class="" data-id="003d4513d110aeb2e5a5fb1ea6fc86f4">
-                    <h2>Never use private for schema vars</h2>
+                    <h2>Never Mark Schema Vars as Private</h2>
                     <div>
+                        <div>Drupal won't be able to access them!</div>
 <pre><code>ConfigEntityBase::get($property_name);
 ConfigEntityBase::set($property_name, $value);</code></pre>
                     </div>
-                    Drupal won't be able to access them!
-                    <br>
                 </section>
             </section>
             <section class="stack" data-id="dbf16219b934b17c49fb58f8774ddf7f">
@@ -386,23 +384,23 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
                 <section class="" data-id="259e2a4163d58e10b3e57867025201a6">
                     <h2>Flag's Annotation</h2>
                     <div>
-<pre><code>@ConfigEntityType(
-    id = "flag",
-    label = @Translation("Flag"),
-    admin_permission = "administer flags",
-    controllers = {
-        "list_builder" = "Drupal\flag\Controller\FlagListController",
-        "form" = {
-            "add" = "Drupal\flag\Form\FlagAddForm",
-            "edit" = "Drupal\flag\Form\FlagEditForm",
-            "delete" = "Drupal\flag\Form\FlagDeleteForm"
-        }
-    },
-    links = {
-        "edit-form" = "flag.edit",
-        "delete-form" = "flag.delete"
-    }
-)</code></pre>
+<pre><code>/** @ConfigEntityType(
+ *    id = "flag",
+ *    label = @Translation("Flag"),
+ *    admin_permission = "administer flags",
+ *    controllers = {
+ *      "list_builder" = "Drupal\flag\Controller\FlagListController",
+ *      "form" = {
+ *        "add" = "Drupal\flag\Form\FlagAddForm",
+ *        "edit" = "Drupal\flag\Form\FlagEditForm",
+ *        "delete" = "Drupal\flag\Form\FlagDeleteForm"
+ *      }
+ *    },
+ *    links = {
+ *      "edit-form" = "flag.edit",
+ *      "delete-form" = "flag.delete"
+ *    }
+ * ) **/</code></pre>
                         <div>(Again, only a sample)</div>
                     </div>
                     <br>
