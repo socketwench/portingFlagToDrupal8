@@ -370,12 +370,13 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
                 </section>
                 <section class="" data-id="7ea780f7a0e5b553ea3bd0c673063fe7">
                     <h2>Annotations</h2>
+                    <div>The assembly manual for the feature provided by the class</div>
                     <div>Metadata included in the class docblock</div>
                 </section><section>
                     <h2>Tells Drupal:</h2>
                     <div>
                         <ul>
-                            <li>What the Flag class is</li>
+                            <li>What the following class is</li>
                             <li>Why its important</li>
                             <li>Where to find other important pieces</li>
                         </ul>
@@ -402,11 +403,146 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
  *    }
  * ) **/</code></pre>
                         <div>(Again, only a sample)</div>
+                </section>
+                <section>
+                    <h2>@ConfigEntityType</h2>
+                    <div>Tells Drupal what follows is a Config Entity</div>
+                    <div>Used for feature discovery after a cache clear</div>
+                </section>
+                <section>
+                    <h2>Controllers = {...}</h2>
+                    <div>Where to find related pieces of functionality</div>
+                    <ul>
+                        <li>List all entities page</li>
+                        <li>Forms</li>
+                    </ul>
+                    <pre><code>/**
+  *    controllers = {
+  *      "list_builder" = "Drupal\flag\Controller\FlagListController",
+  *      "form" = {
+  *        "add" = "Drupal\flag\Form\FlagAddForm",
+  *        "edit" = "Drupal\flag\Form\FlagEditForm",
+  *        "delete" = "Drupal\flag\Form\FlagDeleteForm"
+  *      }
+  *    }
+  */</code></pre>
+                </section>
+            </section>
+            <section>
+                <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>Building the Admin Interface</h1>
+                </section>
+                <section>
+                    <img src="images/flag8AdminUI.png" />
+                </section>
+                <section>
+                    <h2>FlagListController</h2>
+                    <div>Derives from ConfigEntityListBuilder</div>
+                    <div>Provides the <strong>Admin > Structure > Flags</strong> page</div>
+                </section>
+                <section>
+                    <h2>Only two important methods</h2>
+<pre><code>
+    // Builds the header of the table.
+    FlagListController::buildHeader();
+
+    // Populates each row of the table.
+    FlagListController::buildRow($entity);
+</code></pre>
+                </section>
+                <section>
+                    <h2>Add and Edit Flag Pages</h2>
+                    <img src="images/flagFormBase.png" />
+                </section>
+                <section>
+                    <h2>Form Classes</h2>
+                    <div>
+                        <img src="images/formClasses.png" />
                     </div>
-                    <br>
-
-
-
+                </section>
+                <section>
+                    <h2>FlagFormBase</h2>
+                    <div>Does all the real form stuff</div>
+                    <ul>
+                        <li>Builds the form</li>
+                        <li>Handles validation</li>
+                        <li>Handles submit</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>FlagAddForm & FlagEditForm</h2>
+                    <div>Modifies:</div>
+                    <ul>
+                        <li>Where the default values come from</li>
+                        <li>"Create Flag" vs. "Edit Flag" submit button</li>
+                    </ul>
+                </section>
+                <section>
+                    <img src="images/flagDeleteForm.png" />
+                </section>
+                <section>
+                    <h2>Flag Delete Form</h2>
+                    <div>Derives from <code>EntityConfirmFormBase</code> directly</div>
+                    <div>Provides a quick yes/no form</div>
+                </section>
+            </section>
+            <section>
+                <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>Making it Routable</h1>
+                </section>
+                <section data-transition="none">
+                    <img src="images/routing1.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/routing2.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/routing3.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/routing4.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/routing5.png" />
+                </section>
+                <section>
+                    <h2>Drupal 8 Doesn't Think in Paths</h2>
+                    <div>It thinks in route names!</div>
+                    <div>So, how do we add links to existing menus?</div>
+                </section>
+                <section data-transition="none">
+                    <img src="images/menuLinks1.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/menuLinks2.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/menuLinks3.png" />
+                </section>
+                <section>
+                    <h2>Connecting the Add Form</h2>
+                    <img src="images/localTasks.png">
+                </section>
+                <section data-transition="none">
+                    <img src="images/localTasks1.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/localTasks2.png" />
+                </section>
+            </section>
+            <section>
+                <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>Porting the Flagging Entity</h1>
+                </section>
+            </section>
+            <section>
+                <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>Making it Expandable</h1>
+                </section>
+            </section>
+            <section>
+                <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>Running Your Project</h1>
                 </section>
             </section>
             </div>
