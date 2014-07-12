@@ -534,6 +534,63 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
                 <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
                     <h1>Porting the Flagging Entity</h1>
                 </section>
+                <section>
+                    <h2>Designing the Flagging Entity</h2>
+                    <img src="images/designingTheFlaggingEntity.png" />
+                </section>
+                <section>
+                    <h2>ContentEntityBase</h2>
+                    <div>Best for user-created entities</div>
+                    <div>Fields defined by overloading <code>baseFieldDefinitions()</code></div>
+                    <div>Define DB table with <code>hook_schema()</code></div>
+                </section>
+                <section>
+                    <img src="images/flaggingRelationships.png" />
+                </section>
+                <section>
+                    <h2>Flaggings are <em>Weird</em></h2>
+                    <div>Not created through forms</div>
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagService1.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagService2.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagService3.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagService4.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagService5.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagService6.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagService7.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagService8.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagService9.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagService10.png" />
+                </section>
+                <section>
+                    <h2>FlagService</h2>
+                    <div>Plain Old PHP Object (POPO)</div>
+                    <div>Registered container-wide with flag.services.yml</div>
+                </section>
+                <section>
+                    <h2>Flagging and Unflagging</h2>
+                    <div><code>\Drupal::service('flag')->flag();</code></div>
+                    <div><code>\Drupal::service('flag')->unflag();</code></div>
+                </section>
             </section>
             <section>
                 <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
