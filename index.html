@@ -596,6 +596,106 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
                 <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
                     <h1>Making it Expandable</h1>
                 </section>
+                <section data-transition="none">
+                    <img src="images/flagType1.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagType2.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagType3.png" />
+                </section>
+                <section>
+                    <h2>Let's not Recreate Handler Classes</h2>
+                    <div>Hard to expand</div>
+                    <div>Not discoverable</div>
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagType4.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagType5.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagType6.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagType7.png" />
+                </section>
+                <section>
+                    <h2>Flag Type Plugin</h2>
+                    <div>Relates the Flag to the Flaggable</div>
+                    <div>Discoverable using <code>@FlagType</code> annotation</div>
+                </section>
+                <section>
+                    <img src="images/flagTypeClasses.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagType8.png" />
+                </section>
+                <section>
+                    <h2>Plugin Derivatives</h2>
+                    <div>Creates multiple plugins using data</div>
+                    <div>One EntityFlagType plugin created per entity type</div>
+                </section>
+                <section data-transition="none">
+                    <img src="images/linkType1.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/linkType2.png" />
+                </section>
+                <section>
+                    <img src="images/linkTypeUI.png" />
+                </section>
+            </section>
+            <section>
+                <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>Creating an API</h1>
+                </section>
+                <section>
+                    <img src="images/flag7xHooks.png" />
+                </section>
+                <section>
+                    <h2>Hooks <strong>Aren't</strong> Everything in D8</h2>
+                </section>
+                <section>
+                    <img src="images/flag8xAPI.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/eventDispatch1.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/eventDispatch2.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/eventDispatch3.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/eventDispatch4.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/eventDispatch5.png" />
+                </section>
+                <section>
+                    <h2>Flag 8.x Events (So Far)</h2>
+<pre><code>final class FlagEvents {
+
+    const ENTITY_FLAGGED = 'flag.entity_flagged';
+
+    const ENTITY_UNFLAGGED = 'flag.entity_unflagged';
+
+    const FLAG_DELETED = 'flag.flag_deleted';
+}</code></pre>
+                </section>
+                <section>
+                    <h2>Hooks</h2>
+                    <div><code>ModuleHandlerInterface::invokeAll()</code></div>
+                    <div>Module handler injected into FlagService</div>
+<pre><code>public function __construct(ModuleHandlerInterface $module_handler) {
+    $this->moduleHandler = $module_handler;
+}
+</code></pre>
+                </section>
             </section>
             <section>
                 <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
