@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Porting Flag to Drupal 8 -- DrupalCorn 2014</title>
+
+		<meta name="description" content="A reveal.js presentation for DrupalCorn 2014">
+		<meta name="author" content="socketwench">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+        <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+            <section class="" data-id="eda7bc654838c8e31195554ae96b372b" data-background-size="contain" data-background-image="images/flagOnD8-background.png">
+                <h1>Porting Flag to <br>Drupal 8</h1>
+            </section>
+            <section class="stack" data-id="5367537fc184e75d8caf1e6df408afc0">
+                <section class="" data-id="929d8d29ed8f8bc5d6b170aeba5682be" data-background-size="contain" data-background-color="rgba( 22, 152, 213, 0.6 )">
+                    <h1>Who is this person?</h1>
+                    <h2>
+                        <img src="images/whatDoYouMeanTheTestsPassed.jpg">
+                    </h2>
+                </section>
+                <section class="" data-id="b9b984181f1a8af60b70d8e998faf742" data-background-color="rgba( 255, 255, 255, 0.6 )" data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h2>Tess Flynn</h2>
+                    <div>
+                        <br>
+                    </div>
+                    <div>@socketwench</div>
+                    <div>
+                        <br>
+                    </div>
+                    <div>"That's wench, not wrench"</div>
+                </section>
+                <section class="" data-id="26657192f252c5b686b996644f796f31" data-background-color="rgba( 255, 255, 255, 0.6 )">
+                    <h2>
+                        <span>Module co-maintainer for</span>
+                        <br>
+                    </h2>
+                    <div data-fragment-index="0">Flag</div>
+                    <div data-fragment-index="1">Flag Friend</div>
+                    <div data-fragment-index="2">Examples</div>
+                    <div>
+                        <br>
+                    </div>
+                </section>
+            </section>
+            <section class="stack" data-id="169ae6a7e5fd6549c2369b862cd220b1">
+                <section class="" data-id="9ba7e9b47cc4044389bc4c3c77cebac0" data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>Why Port Flag?</h1>
+                    <div>
+                        <br>
+                    </div>
+                    <blockquote>We need modules ported to Drupal 8 <b>now</b>.<br>
+                    </blockquote>-- Angie "webchick" Byron<br>
+                </section>
+                <section class="" data-id="afbe4b32efa83c4039ad9f0eaa9cba54">
+                    <h2>Why not contribute <br>to Drupal 8 Directly?</h2>
+                </section>
+                <section class="" data-id="fce2b94a63a5c981bdf185ca8992a89f" data-background-color="rgba( 255, 255, 255, 0.6 )">
+                    <h2>The Reverse Sisyphus Problem</h2>
+                    <div>
+                        <img src="images/reverseSisyphus.png">
+                        <br>
+                    </div>
+                </section>
+                <section class="" data-id="80573c418f834230a2fc6c0eb719b6ff" data-background-color="rgba( 255, 255, 255, 0.6 )">
+                    <h2>The Valley of Dearth</h2>
+                    <div>
+                        <img src="images/valleyOfDerth.png" style="width: 737.9823798431056px; height: 420.5492696963051px; max-height: none; max-width: none;">
+                        <br>
+                    </div>
+                </section>
+                <section class="" data-id="b9dcf6993802c4586cdaa1b592851fe2">
+                    <h2>There's got to be a better way...</h2>
+                    <img src="images/IllPortFlagModule.png">
+                </section>
+            </section>
+            <section class="stack" data-id="2eda12688c9e358234a752eaeea8da8b">
+                <section class="" data-id="0fb5afc1a693ec458d49695caf7040e6">
+                    <h1>What is Flag?</h1>
+                    <img src="images/flaggingUI.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/node0.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/node1.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/node2.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/node3.png" />
+                </section>
+                <section>
+                    <h1>Flag Module Defined</h1>
+                    <div>
+                        <blockquote> Enables administrators to define boolean fields that can be attached to site content which each user may set or unset.</blockquote>
+                    </div>
+                </section>
+                <section>
+                    <img src="images/flagProcess.png" />
+                </section>
+                <section class="" data-id="79a119dadbe7b01ac987f08f84358661">
+                    <h2>Flags</h2>
+                    <div>
+                        <br>
+                    </div>
+                    <blockquote>Administrator-defined boolean field</blockquote>
+                    <p>
+                        <br>
+                    </p>
+                    <p>Stored as an Entity since 7.x-2.x</p>
+                    <p>May be attached to one entity type, but...</p>
+                    <p>...multiple bundles of the same type</p>
+                    <p>Created under <b>Admin &gt; Structure &gt; Flags</b>
+                    </p>
+                    <p>May be fielded (7.x-3.x)</p>
+                    <br>
+                </section>
+                <section class="" data-id="b186933e1dff24329b808322ff713b27">
+                    <h2>Flaggings</h2>
+                    <blockquote>Entity created to store when a user sets a Flag.</blockquote>
+                    <p>
+        <span style="font-size: 35.91954040527344px; font-style: normal; font-variant: normal;">
+            <br>
+        </span>
+                    </p>
+                    <p>
+                        <span style="font-size: 35.91954040527344px; font-style: normal; font-variant: normal;">Which flag was set?</span>
+                    </p>
+                    <p>
+                        <span style="font-size: 35.91954040527344px; font-style: normal; font-variant: normal;">On what entity was the flag set?</span>
+                    </p>
+                    <p>When was the flag set?</p>
+                    <p>Who set the flag?</p>
+                    <p>
+                        <br>
+                    </p>
+                </section>
+                <section class="" data-id="d00f04a0006edcae4f6a919530c0afc8">
+                    <h2>Flaggables</h2>
+                    <blockquote>Any entity that has a flag defined and for which flaggings may be created</blockquote>
+                    <br>
+                </section>
+            </section>
+            <section class="stack" data-id="6ac45ed54b4256f191fbdaaa5970b7dd">
+                <section class="" data-id="5c2b6bae0be27de4a3340723d1ffb072" data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>First, do a code review</h1>
+                </section>
+                <section class="" data-id="b1a3f92a9466a146cb56c1e5155c5936">
+                    <h2>How does your module <i>really</i>&nbsp;work?</h2>
+                    <img src="images/Flag7x.png" style="width: 600px; height: auto; max-height: none; max-width: none;">
+                </section>
+                <section class="" data-id="d83a8422377e33b334d4f298cf39d6f3">
+                    <h2>Handler Classes</h2>
+                    <div>
+                        <img src="images/handlerClasses.png" style="width: 735.0023348304047px; height: 465.1313296370001px; max-height: none; max-width: none;">
+                        <br>
+                    </div>
+                </section>
+                <section class="" data-id="1fc23ed3ebabe37761296b5e3f4a57c5">
+                    <h2>Mostly, a Typical Drupal 7 Module</h2>
+                    <div>Large surface of straight functions</div>
+                    <div>Entity support was refactored in</div>
+                    <div>OOP was used, but...</div>
+                </section>
+                <section>
+                    <img src="images/theBlob.jpg" />
+                </section>
+                <section class="" data-id="cc5e3b99b3f344d317d71c9fda057f31">
+                    <h2>How PHP4 Classes look today</h2>
+                    <div>Weird factory methods</div>
+                    <div>
+<pre><code style="text-align: center; "> $flag = flag_flag::factory_by_array($bigOlArray);
+
+    $flag = flag_flag::factory_by_entity_type($entity_type);
+
+    $flag = flag_flag::factory_by_row($databaseRow);
+</code></pre>
+                    </div>All methods were public<br>
+                    <div>All class variables were public</div>
+                    <div>Basically, a big blob of functions</div>
+                </section>
+            </section>
+            <section class="stack" data-id="e75ea9ffe1619a7d7bfff7cd6a083998">
+                <section class="" data-id="0463a0ff412280ac978daf97c6bc57a6" data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>Where to start?</h1>
+                </section>
+                <section class="" data-id="3de099415b38ee21de0bf16301f9683c">
+                    <h2>Question all the things!</h2>
+                    <div>
+                        <img src="images/questionAllTheThigns.png" style="width: 684.7110872250407px; height: 460.39070419235867px; max-height: none; max-width: none;">
+                        <br>
+                    </div>
+                </section>
+                <section class="" data-id="0b2785293e4c36b618e3fa0237f11cfe" data-background-color="rgba( 255, 255, 255, 0.6 )">
+                    <h2>Set some expectations</h2>
+                    <div>
+                        <img src="images/shouldIPort.png" style="width: 741.9129550411326px; height: 490.43848854831305px; max-height: none; max-width: none;">
+                        <br>
+                    </div>
+                </section>
+                <section class="" data-id="04a68ef83bb094649a072d6be0bb133b" data-background-image="images/sword.png" data-background-size="initial">
+                    <h2>Test Driven Development?</h2>
+                    <div>Simpletest is in Drupal 8!</div>
+                    <div>But...</div>
+                    <div>Porting tests may limit your thinking</div>
+                </section>
+                <section class="" data-id="6a8301b2c36cb85f923e13b3cd73ad23" data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>Start with the most central piece</h1>
+                    <h1>
+                    </h1>
+                    <h2>and</h2>
+                    <h1>work your way out</h1>
+                </section>
+            </section>
+            <section class="stack" data-id="b110b0201ca512f103e10f11c7f9057b">
+                <section class="" data-id="fe6f677ed6fede13a43059004b7c5ac9" data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>Porting the <br>Flag Entity</h1>
+                </section>
+                <section class="" data-id="3b952ecae9658b4da334ea6122ed218e">
+                    <h2>Designing the Flag Class</h2>
+                    <div>
+                        <img src="images/FlagUML.png">
+                        <br>
+                    </div>
+                </section>
+                <section class="" data-id="76dc30d09d0f10065d8d8b95e176ba96">
+                    <h2>FlagInterface</h2>
+                    <div>
+<pre><code>interface FlagInterface extends ConfigEntityInterface {
+
+    public function enable();
+
+    public function disable();
+
+    public function isFlagged(EntityInterface $entity, AccountInterface $account = NULL);
+
+    public function getPermissions();
+
+    public function isGlobal();
+
+    public function setGlobal($isGlobal);
+
+    }
+</code></pre>
+                    </div>Best Practice OOP<br>
+                    <div>Sketch out what the class does</div>
+                </section>
+                <section class="" data-id="79aaf1914acbbaa6830c63b8f4922886">
+                    <h2>Configuration Entities</h2>
+                    <div>Designed for administrator-defined structures</div>
+                    <div>Data my be exported to YAML</div>
+                    <div>It's structure, not data</div>
+                </section>
+                <section class="" data-id="815140d3e93d645da2b12cab3f7fd880">
+                    <h2>ConfigEntityBase</h2>
+                    <div>
+                        <pre><code>class Flag extends ConfigEntityBase implements FlagInterface</code></pre>
+                    </div>Foundation class for config entities<br>
+                    <div>Does all the Drupal work, so you can do <i>your</i>&nbsp;work</div>
+                </section>
+                <section class="" data-id="763f1e4bd7ecfbdb25a9b0220b5e3ad2">
+                    <h2>Config Entity Schema</h2>
+                    <div>Defines the config entity fields</div>
+                    <div>The data type of each field</div>
+                    <div>Tells Drupal what to save</div>
+                    <div>
+                        <br>
+                    </div>
+                </section>
+                <section class="" data-id="a390aba1e4246c8afc380edaa6091313">
+                    <h2>flag.schema.yml</h2>
+                    <div>&lt;moduleRoot&gt;/config/schema/</div>
+                    <div>
+<pre><code>flag.flag.*:
+    type: config_entity
+    label: 'Flag'
+    mapping:
+        id:
+            type: string
+            label: 'Flag identifier'
+        is_global:
+            type: boolean
+            label: 'Is flag global'
+        flag_short:
+            type: string
+            label: 'Flag Link Text'
+        unflag_short:
+            type: string
+            label: 'Unflag Link Text'
+</code></pre>
+                    </div>
+                    <font style="font-size: 24px;">(above is just a sample)</font>
+                    <br>
+                </section>
+                <section class="" data-id="bff51ae2d0da12112367b07ca56a8745">
+                    <h2>Defining Class Variables</h2>
+                    <div>Best practice is to match your schema</div>
+                    <div>Code completion in your IDE</div>
+                    <div>Easiest place to document schema</div>
+                </section>
+                <section>
+                    <h2>Please use an IDE & Debugger</h2>
+                    <div>Yes, really. It's time.</div>
+                    <div>Drupal 7 has ~3000 files</div>
+                    <div>Drupal 8 has <em>4 times that many</em></div>
+                </section>
+                <section class="" data-id="47aa554dbe9bbbed9f8139d1eff34185">
+                    <h2>Getters and Setters<br>for Schema Variables</h2>
+                    <div>Create for protected class vars</div>
+                    <div>Don't bother for public class vars</div>
+                </section>
+                <section class="" data-id="003d4513d110aeb2e5a5fb1ea6fc86f4">
+                    <h2>Never Mark Schema Vars as Private</h2>
+                    <div>
+                        <div>Drupal won't be able to access them!</div>
+<pre><code>ConfigEntityBase::get($property_name);
+ConfigEntityBase::set($property_name, $value);</code></pre>
+                    </div>
+                </section>
+            </section>
+            <section class="stack" data-id="dbf16219b934b17c49fb58f8774ddf7f">
+                <section class="" data-id="622a46b8c7bef9ee899e130e624cbac7" data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>Plugging Flag Entity Into Drupal</h1>
+                </section>
+                <section data-transition="none">
+                    <img src="images/annotation1.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/annotation2.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/annotation3.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/annotation4.png" />
+                </section>
+                <section class="" data-id="7ea780f7a0e5b553ea3bd0c673063fe7">
+                    <h2>Annotations</h2>
+                    <div>The assembly manual for the feature provided by the class</div>
+                    <div>Metadata included in the class docblock</div>
+                </section><section>
+                    <h2>Tells Drupal:</h2>
+                    <div>
+                        <ul>
+                            <li>What the following class is</li>
+                            <li>Why its important</li>
+                            <li>Where to find other important pieces</li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="" data-id="259e2a4163d58e10b3e57867025201a6">
+                    <h2>Flag's Annotation</h2>
+                    <div>
+<pre><code>/** @ConfigEntityType(
+ *    id = "flag",
+ *    label = @Translation("Flag"),
+ *    admin_permission = "administer flags",
+ *    controllers = {
+ *      "list_builder" = "Drupal\flag\Controller\FlagListController",
+ *      "form" = {
+ *        "add" = "Drupal\flag\Form\FlagAddForm",
+ *        "edit" = "Drupal\flag\Form\FlagEditForm",
+ *        "delete" = "Drupal\flag\Form\FlagDeleteForm"
+ *      }
+ *    },
+ *    links = {
+ *      "edit-form" = "flag.edit",
+ *      "delete-form" = "flag.delete"
+ *    }
+ * ) **/</code></pre>
+                        <div>(Again, only a sample)</div>
+                </section>
+                <section>
+                    <h2>@ConfigEntityType</h2>
+                    <div>Tells Drupal what follows is a Config Entity</div>
+                    <div>Used for feature discovery after a cache clear</div>
+                </section>
+                <section>
+                    <h2>Controllers = {...}</h2>
+                    <div>Where to find related pieces of functionality</div>
+                    <ul>
+                        <li>List all entities page</li>
+                        <li>Forms</li>
+                    </ul>
+                    <pre><code>/**
+  *    controllers = {
+  *      "list_builder" = "Drupal\flag\Controller\FlagListController",
+  *      "form" = {
+  *        "add" = "Drupal\flag\Form\FlagAddForm",
+  *        "edit" = "Drupal\flag\Form\FlagEditForm",
+  *        "delete" = "Drupal\flag\Form\FlagDeleteForm"
+  *      }
+  *    }
+  */</code></pre>
+                </section>
+            </section>
+            <section>
+                <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>Building the Admin Interface</h1>
+                </section>
+                <section>
+                    <img src="images/flag8AdminUI.png" />
+                </section>
+                <section>
+                    <h2>FlagListController</h2>
+                    <div>Derives from ConfigEntityListBuilder</div>
+                    <div>Provides the <strong>Admin > Structure > Flags</strong> page</div>
+                </section>
+                <section>
+                    <h2>Only two important methods</h2>
+<pre><code>
+    // Builds the header of the table.
+    FlagListController::buildHeader();
+
+    // Populates each row of the table.
+    FlagListController::buildRow($entity);
+</code></pre>
+                </section>
+                <section>
+                    <h2>Add and Edit Flag Pages</h2>
+                    <img src="images/flagFormBase.png" />
+                </section>
+                <section>
+                    <h2>Form Classes</h2>
+                    <div>
+                        <img src="images/formClasses.png" />
+                    </div>
+                </section>
+                <section>
+                    <h2>FlagFormBase</h2>
+                    <div>Does all the real form stuff</div>
+                    <ul>
+                        <li>Builds the form</li>
+                        <li>Handles validation</li>
+                        <li>Handles submit</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>FlagAddForm & FlagEditForm</h2>
+                    <div>Modifies:</div>
+                    <ul>
+                        <li>Where the default values come from</li>
+                        <li>"Create Flag" vs. "Edit Flag" submit button</li>
+                    </ul>
+                </section>
+                <section>
+                    <img src="images/flagDeleteForm.png" />
+                </section>
+                <section>
+                    <h2>Flag Delete Form</h2>
+                    <div>Derives from <code>EntityConfirmFormBase</code> directly</div>
+                    <div>Provides a quick yes/no form</div>
+                </section>
+            </section>
+            <section>
+                <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>Making it Routable</h1>
+                </section>
+                <section data-transition="none">
+                    <img src="images/routing1.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/routing2.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/routing3.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/routing4.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/routing5.png" />
+                </section>
+                <section>
+                    <h2>Drupal 8 Doesn't Think in Paths</h2>
+                    <div>It thinks in route names!</div>
+                    <div>So, how do we add links to existing menus?</div>
+                </section>
+                <section data-transition="none">
+                    <img src="images/menuLinks1.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/menuLinks2.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/menuLinks3.png" />
+                </section>
+                <section>
+                    <h2>Connecting the Add Form</h2>
+                    <img src="images/localTasks.png">
+                </section>
+                <section data-transition="none">
+                    <img src="images/localTasks1.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/localTasks2.png" />
+                </section>
+            </section>
+            <section>
+                <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>Porting the Flagging Entity</h1>
+                </section>
+                <section>
+                    <h2>Designing the Flagging Entity</h2>
+                    <img src="images/designingTheFlaggingEntity.png" />
+                </section>
+                <section>
+                    <h2>ContentEntityBase</h2>
+                    <div>Best for user-created entities</div>
+                    <div>Fields defined by overloading <code>baseFieldDefinitions()</code></div>
+                    <div>Define DB table with <code>hook_schema()</code></div>
+                </section>
+                <section>
+                    <img src="images/flaggingRelationships.png" />
+                </section>
+                <section>
+                    <h2>Flaggings are <em>Weird</em></h2>
+                    <div>Not created through forms</div>
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagService1.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagService2.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagService3.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagService4.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagService5.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagService6.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagService7.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagService8.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagService9.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagService10.png" />
+                </section>
+                <section>
+                    <h2>FlagService</h2>
+                    <div>Plain Old PHP Object (POPO)</div>
+                    <div>Registered container-wide with flag.services.yml</div>
+                </section>
+                <section>
+                    <h2>Flagging and Unflagging</h2>
+                    <div><code>\Drupal::service('flag')->flag();</code></div>
+                    <div><code>\Drupal::service('flag')->unflag();</code></div>
+                </section>
+            </section>
+            <section>
+                <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>Making it Expandable</h1>
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagType1.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagType2.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagType3.png" />
+                </section>
+                <section>
+                    <h2>Let's not Recreate Handler Classes</h2>
+                    <div>Hard to expand</div>
+                    <div>Not discoverable</div>
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagType4.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagType5.png" />
+                </section>
+                <section>
+                    <h2>Flag Type Plugin</h2>
+                    <div>Relates the Flag to the Flaggable</div>
+                    <div>Discoverable using <code>@FlagType</code> annotation</div>
+                    <div>Added dynamically, not a subclass!</div>
+                </section>
+                <section>
+                    <img src="images/flagTypeClasses.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/flagType8.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/linkType1.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/linkType2.png" />
+                </section>
+                <section>
+                    <img src="images/linkTypeUI.png" />
+                </section>
+            </section>
+            <section>
+                <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>Creating an API</h1>
+                </section>
+                <section>
+                    <img src="images/flag7xHooks.png" />
+                </section>
+                <section>
+                    <h2>Hooks <strong>Aren't</strong> Everything in D8</h2>
+                </section>
+                <section>
+                    <img src="images/flag8xAPI.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/eventDispatch1.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/eventDispatch2.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/eventDispatch3.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/eventDispatch4.png" />
+                </section>
+                <section data-transition="none">
+                    <img src="images/eventDispatch5.png" />
+                </section>
+                <section>
+                    <h2>Flag 8.x Events (So Far)</h2>
+<pre><code>final class FlagEvents {
+
+    const ENTITY_FLAGGED = 'flag.entity_flagged';
+
+    const ENTITY_UNFLAGGED = 'flag.entity_unflagged';
+
+    const FLAG_DELETED = 'flag.flag_deleted';
+}</code></pre>
+                </section>
+                <section>
+                    <h2>Hooks</h2>
+                    <div><code>ModuleHandlerInterface::invokeAll()</code></div>
+                    <div>Module handler injected into FlagService</div>
+<pre><code>public function __construct(ModuleHandlerInterface $module_handler) {
+    $this->moduleHandler = $module_handler;
+}
+</code></pre>
+                </section>
+            </section>
+            <section>
+                <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>Running Your Project</h1>
+                </section>
+                <section>
+                    <h2>Do it in Public</h2>
+                    <div>But with a warning label</div>
+                </section>
+                <section>
+                    <img src="images/github.png" />
+                </section>
+                <section>
+                    <h2>Ask for Help</h2>
+                    <div>But be <em>very</em> patient,</div>
+                    <div>And show appreciation!</div>
+                </section>
+                <section>
+                    <h2>Places to find Help</h2>
+                    <div>#drupal-contribute</div>
+                    <div>drupal.org/list-changes</div>
+                    <div>drupal.org/project/issues/drupal</div>
+                </section>
+                <section>
+                    <h2>Ask for Funding</h2>
+                    <div>Travel money to you get team together</div>
+                    <div>Attend a Conference</div>
+                    <div>Take time off of work to code</div>
+                </section>
+                <section>
+                    <img src="images/drupalfund.png" />
+                </section>
+                <section>
+                    <h2>Things Are Easier Now</h2>
+                </section>
+                <section>
+                    <img src="images/exampleModule.png" />
+                </section>
+                <section>
+                    <h2>Examples for 8.x</h2>
+                    <div>Config Entity example already committed!</div>
+                    <div>gittip team: gittip.com/DrupalExamples</div>
+                </section><section>
+                    <h2>Example Module at Drupalcamp Twin Cities</h2>
+                    <div>"Examples Module Ain't Core (But it ain't contrib neither)"</div>
+                </section>
+            </section>
+            <section>
+                <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>Summary</h1>
+                </section>
+                <section>
+                    <h2>Port now to Learn.</h2>
+                    <h2>Or wait to work.</h2>
+                </section>
+                <section>
+                    <h2>Do a code review.</h2>
+                </section>
+                <section>
+                    <h2>Question everything!</h2>
+                    <h2>Nothing is sacred.</h2>
+                </section>
+                <section>
+                    <h2>Use an IDE and a Debugger.</h2>
+                </section>
+                <section>
+                    <h2>Patiently ask for help,</h2>
+                    <h2>and show appreciation.</h2>
+                </section>
+                <section>
+                    <h2>Do it in public,</h2>
+                    <h2>but with a warning label.</h2>
+                </section>
+                <section>
+                    <h2>Is money the problem?</h2>
+                    <h2>Consider crowdfunding.</h2>
+                </section>
+                <section>
+                    <h2>Things are easier now, use Example Module</h2>
+                </section>
+            </section>
+            <section>
+                <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>Thank you!</h1>
+                    <div>@socketwench</div>
+                    <div>https://github.com/socketwench/portingFlagToDrupal8</div>
+                </section>
+            </section>
+            </div>
+
+
+        </div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
