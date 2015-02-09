@@ -60,10 +60,12 @@
                         <br>
                     </div>
                     <div>@socketwench</div>
+                    <div>"That's wench, not wrench"</div>
                     <div>
                         <br>
                     </div>
-                    <div>"That's wench, not wrench"</div>
+                    <div>Drupal Developer with</div>
+                    <img src="images/blinkReactionLogo.png">
                 </section>
                 <section class="" data-id="26657192f252c5b686b996644f796f31" data-background-color="rgba( 255, 255, 255, 0.6 )">
                     <h2>
@@ -228,12 +230,9 @@
                         <br>
                     </div>
                 </section>
-                <section class="" data-id="0b2785293e4c36b618e3fa0237f11cfe" data-background-color="rgba( 255, 255, 255, 0.6 )">
+                <section data-transition="none">
                     <h2>Set some expectations</h2>
-                    <div>
-                        <img src="images/shouldIPort.png" style="width: 741.9129550411326px; height: 490.43848854831305px; max-height: none; max-width: none;">
-                        <br>
-                    </div>
+                    <img src="images/shouldIPort.png">
                 </section>
                 <section class="" data-id="04a68ef83bb094649a072d6be0bb133b" data-background-image="images/sword.png" data-background-size="initial">
                     <h2>Test Driven Development?</h2>
@@ -242,11 +241,9 @@
                     <div>Porting tests may limit your thinking</div>
                 </section>
                 <section class="" data-id="6a8301b2c36cb85f923e13b3cd73ad23" data-background-image="images/flagOnD8-background.png" data-background-size="contain">
-                    <h1>Start with the most central piece</h1>
-                    <h1>
-                    </h1>
+                    <h2>Start with the most central piece</h2>
                     <h2>and</h2>
-                    <h1>work your way out</h1>
+                    <h2>work your way out</h2>
                 </section>
             </section>
             <section class="stack" data-id="b110b0201ca512f103e10f11c7f9057b">
@@ -391,7 +388,7 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
  *    id = "flag",
  *    label = @Translation("Flag"),
  *    admin_permission = "administer flags",
- *    controllers = {
+ *    handlers = {
  *      "list_builder" = "Drupal\flag\Controller\FlagListController",
  *      "form" = {
  *        "add" = "Drupal\flag\Form\FlagAddForm",
@@ -400,8 +397,8 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
  *      }
  *    },
  *    links = {
- *      "edit-form" = "flag.edit",
- *      "delete-form" = "flag.delete"
+ *      "edit-form" = "/admin/structure/flags/manage/{flag}",
+ *      "delete-form" = "/admin/structure/flags/manage/{flag}/delete",
  *    }
  * ) **/</code></pre>
                         <div>(Again, only a sample)</div>
@@ -412,22 +409,22 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
                     <div>Used for feature discovery after a cache clear</div>
                 </section>
                 <section>
-                    <h2>Controllers = {...}</h2>
+                    <h2>Handlers = {...}</h2>
                     <div>Where to find related pieces of functionality</div>
                     <ul>
                         <li>List all entities page</li>
                         <li>Forms</li>
                     </ul>
                     <pre><code>/**
-  *    controllers = {
-  *      "list_builder" = "Drupal\flag\Controller\FlagListController",
-  *      "form" = {
-  *        "add" = "Drupal\flag\Form\FlagAddForm",
-  *        "edit" = "Drupal\flag\Form\FlagEditForm",
-  *        "delete" = "Drupal\flag\Form\FlagDeleteForm"
-  *      }
-  *    }
-  */</code></pre>
+ *    handlers = {
+ *      "list_builder" = "Drupal\flag\Controller\FlagListController",
+ *      "form" = {
+ *        "add" = "Drupal\flag\Form\FlagAddForm",
+ *        "edit" = "Drupal\flag\Form\FlagEditForm",
+ *        "delete" = "Drupal\flag\Form\FlagDeleteForm"
+ *      }
+ *    },
+ */</code></pre>
                 </section>
             </section>
             <section>
@@ -756,6 +753,7 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
                 <section>
                     <h2>Port now to Learn.</h2>
                     <h2>Or wait to work.</h2>
+                    <div class="fragment">(But don't wait too long!)</div>
                 </section>
                 <section>
                     <h2>Do a code review.</h2>
