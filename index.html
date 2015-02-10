@@ -45,7 +45,7 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
             <div class="slides">
             <section class="" data-id="eda7bc654838c8e31195554ae96b372b" data-background-size="contain" data-background-image="images/flagOnD8-background.png">
-                <h1>Porting Flag to <br>Drupal 8</h1>
+                <h1>Capture the (Drupal 8) Flag</h1>
             </section>
             <section class="stack" data-id="5367537fc184e75d8caf1e6df408afc0">
                 <section class="" data-id="929d8d29ed8f8bc5d6b170aeba5682be" data-background-size="contain" data-background-color="rgba( 22, 152, 213, 0.6 )">
@@ -60,10 +60,12 @@
                         <br>
                     </div>
                     <div>@socketwench</div>
+                    <div>"That's wench, not wrench"</div>
                     <div>
                         <br>
                     </div>
-                    <div>"That's wench, not wrench"</div>
+                    <div>Drupal Developer with</div>
+                    <img src="images/blinkReactionLogo.png">
                 </section>
                 <section class="" data-id="26657192f252c5b686b996644f796f31" data-background-color="rgba( 255, 255, 255, 0.6 )">
                     <h2>
@@ -228,12 +230,9 @@
                         <br>
                     </div>
                 </section>
-                <section class="" data-id="0b2785293e4c36b618e3fa0237f11cfe" data-background-color="rgba( 255, 255, 255, 0.6 )">
+                <section data-transition="none">
                     <h2>Set some expectations</h2>
-                    <div>
-                        <img src="images/shouldIPort.png" style="width: 741.9129550411326px; height: 490.43848854831305px; max-height: none; max-width: none;">
-                        <br>
-                    </div>
+                    <img src="images/shouldIPort.png">
                 </section>
                 <section class="" data-id="04a68ef83bb094649a072d6be0bb133b" data-background-image="images/sword.png" data-background-size="initial">
                     <h2>Test Driven Development?</h2>
@@ -242,11 +241,9 @@
                     <div>Porting tests may limit your thinking</div>
                 </section>
                 <section class="" data-id="6a8301b2c36cb85f923e13b3cd73ad23" data-background-image="images/flagOnD8-background.png" data-background-size="contain">
-                    <h1>Start with the most central piece</h1>
-                    <h1>
-                    </h1>
+                    <h2>Start with the most central piece</h2>
                     <h2>and</h2>
-                    <h1>work your way out</h1>
+                    <h2>work your way out</h2>
                 </section>
             </section>
             <section class="stack" data-id="b110b0201ca512f103e10f11c7f9057b">
@@ -342,9 +339,9 @@
                     <div>Drupal 8 has <em>4 times that many</em></div>
                 </section>
                 <section class="" data-id="47aa554dbe9bbbed9f8139d1eff34185">
-                    <h2>Getters and Setters<br>for Schema Variables</h2>
-                    <div>Create for protected class vars</div>
-                    <div>Don't bother for public class vars</div>
+                    <h2>Getters and Setters</h2>
+                    <div>Create for <em>all</em> schema vars</div>
+                    <div>Interface is incomplete otherwise!</div>
                 </section>
                 <section class="" data-id="003d4513d110aeb2e5a5fb1ea6fc86f4">
                     <h2>Never Mark Schema Vars as Private</h2>
@@ -392,7 +389,7 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
  *    id = "flag",
  *    label = @Translation("Flag"),
  *    admin_permission = "administer flags",
- *    controllers = {
+ *    handlers = {
  *      "list_builder" = "Drupal\flag\Controller\FlagListController",
  *      "form" = {
  *        "add" = "Drupal\flag\Form\FlagAddForm",
@@ -401,8 +398,8 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
  *      }
  *    },
  *    links = {
- *      "edit-form" = "flag.edit",
- *      "delete-form" = "flag.delete"
+ *      "edit-form" = "/admin/structure/flags/manage/{flag}",
+ *      "delete-form" = "/admin/structure/flags/manage/{flag}/delete",
  *    }
  * ) **/</code></pre>
                         <div>(Again, only a sample)</div>
@@ -413,22 +410,22 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
                     <div>Used for feature discovery after a cache clear</div>
                 </section>
                 <section>
-                    <h2>Controllers = {...}</h2>
+                    <h2>Handlers = {...}</h2>
                     <div>Where to find related pieces of functionality</div>
                     <ul>
                         <li>List all entities page</li>
                         <li>Forms</li>
                     </ul>
                     <pre><code>/**
-  *    controllers = {
-  *      "list_builder" = "Drupal\flag\Controller\FlagListController",
-  *      "form" = {
-  *        "add" = "Drupal\flag\Form\FlagAddForm",
-  *        "edit" = "Drupal\flag\Form\FlagEditForm",
-  *        "delete" = "Drupal\flag\Form\FlagDeleteForm"
-  *      }
-  *    }
-  */</code></pre>
+ *    handlers = {
+ *      "list_builder" = "Drupal\flag\Controller\FlagListController",
+ *      "form" = {
+ *        "add" = "Drupal\flag\Form\FlagAddForm",
+ *        "edit" = "Drupal\flag\Form\FlagEditForm",
+ *        "delete" = "Drupal\flag\Form\FlagDeleteForm"
+ *      }
+ *    },
+ */</code></pre>
                 </section>
             </section>
             <section>
@@ -698,6 +695,18 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
                     <h2>Do it in Public</h2>
                     <div>But with a warning label</div>
                 </section>
+                <section  data-transition="none">
+                    <img src="images/whereToRepo.png">
+                </section>
+                <section  data-transition="none">
+                    <img src="images/whereToRepo2.png">
+                </section>
+                <section  data-transition="none">
+                    <img src="images/whereToRepo3.png">
+                </section>
+                <section  data-transition="none">
+                    <img src="images/whereToRepo4.png">
+                </section>
                 <section>
                     <img src="images/github.png" />
                 </section>
@@ -714,26 +723,28 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
                 </section>
                 <section>
                     <h2>Ask for Funding</h2>
-                    <div>Travel money to you get team together</div>
+                    <div>Travel money to get your team together</div>
                     <div>Attend a Conference</div>
                     <div>Take time off of work to code</div>
                 </section>
                 <section>
                     <img src="images/drupalfund.png" />
                 </section>
+                <section data-transition="none">
+                    <h2>When to move back to D.O?</h2>
+                    <img src="images/minModuleViability.png" />
+                </section>
+                <section data-transition="none">
+                    <h2>You might be tempted to do this</h2>
+                    <img src="images/minModuleViability2.png" />
+                </section>
+                <section data-transition="none">
+                    <h2>Don't!<br>Move Once it's Viable!</h2>
+                    <img src="images/minModuleViability3.png" />
+                </section>
                 <section>
                     <h2>Things Are Easier Now</h2>
-                </section>
-                <section>
                     <img src="images/exampleModule.png" />
-                </section>
-                <section>
-                    <h2>Examples for 8.x</h2>
-                    <div>Config Entity example already committed!</div>
-                    <div>gittip team: gittip.com/DrupalExamples</div>
-                </section><section>
-                    <h2>Example Module at Drupalcamp Twin Cities</h2>
-                    <div>"Examples Module Ain't Core (But it ain't contrib neither)"</div>
                 </section>
             </section>
             <section>
@@ -743,6 +754,7 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
                 <section>
                     <h2>Port now to Learn.</h2>
                     <h2>Or wait to work.</h2>
+                    <div class="fragment">(But don't wait too long!)</div>
                 </section>
                 <section>
                     <h2>Do a code review.</h2>
@@ -767,14 +779,25 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
                     <h2>Consider crowdfunding.</h2>
                 </section>
                 <section>
+                    <h2>Move out of the sandbox fast.</h2>
+                </section>
+                <section>
                     <h2>Things are easier now, use Example Module</h2>
+                </section>
+            </section>
+            <section>
+                <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h2>Special Thanks To</h2>
+                    <div>
+                        @timplunkett, @larowlan, @YesCT, @davereid, @wizonesolutions, Lauren Shey, and Blink Reaction.
+                    </div>
                 </section>
             </section>
             <section>
                 <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
                     <h1>Thank you!</h1>
                     <div>@socketwench</div>
-                    <div>https://github.com/socketwench/portingFlagToDrupal8</div>
+                    <div>http://socketwench.github.io/portingFlagToDrupal8</div>
                 </section>
             </section>
             </div>
