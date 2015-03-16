@@ -61,11 +61,6 @@
                     </div>
                     <div>@socketwench</div>
                     <div>"That's wench, not wrench"</div>
-                    <div>
-                        <br>
-                    </div>
-                    <div>Drupal Developer with</div>
-                    <img src="images/blinkReactionLogo.png">
                 </section>
                 <section class="" data-id="26657192f252c5b686b996644f796f31" data-background-color="rgba( 255, 255, 255, 0.6 )">
                     <h2>
@@ -78,6 +73,16 @@
                     <div>
                         <br>
                     </div>
+                </section>
+                <section>
+                    <h2>Drupal Developer with</h2>
+                    <img src="images/blinkReactionLogo.png" />
+                    <p class="fragment">(We're hiring!)</p>
+                    <aside class="notes">
+                        I work as a developer with Blink Reaction. We're soon to be the world's largest Drupal
+                        Development Consultancy. We're hiring! You can talk to me after the session, tell me about your
+                        project, or talk to anyone at the booth outside.
+                    </aside>
                 </section>
             </section>
             <section class="stack" data-id="169ae6a7e5fd6549c2369b862cd220b1">
@@ -532,6 +537,61 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
             </section>
             <section>
                 <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
+                    <h1>That's...<br/>a lot of code to write</h1>
+                </section>
+                <section>
+                    <img src="images/deepHurting.jpg" />
+                    <aside class="notes">
+                        If you're a Drupal 7 developer, you might be looking at this and thinking about how painful
+                        it will be to write all of that code just to make one entity.
+                    </aside>
+                </section>
+                <section>
+                    <h2>Lots of Scaffolding</h2>
+                    <p>*.yml files, interfaces, base classes, base forms</p>
+                    <p>Necessary, but tedious to write</p>
+                    <aside class="notes">
+                        Most Drupal 8 modules will contain a lot of scaffolding code. This includes *.yml files,
+                        interfaces, base classes, and base forms. It's all necessary (not to mention common for OOP)
+                        but tedious to write.
+                    </aside>
+                </section>
+                <section>
+                    <h2>Reducing Tedium</h2>
+                    <img src="images/drupalconsole.png" />
+                    <aside class="notes">
+                        Fortunately, today you can spare yourself all of that tedium by using Drupal Console.
+                    </aside>
+                </section>
+                <section>
+                    <h2>Generating a Module</h2>
+                    <img src="images/generateModule.png" />
+                    <aside class="notes">
+                        Drupal Console is a command line application that's great at generating Drupal 8 scaffolds.
+                        Here's all that's required to generate a new module. The process is interactive, asking you
+                        a series of questions interactively instead of requiring lots of parameters.
+                    </aside>
+                </section>
+                <section>
+                    <h2>Config Entities</h2>
+                    <img src="images/generateConfigEntity.png" />
+                    <aside class="notes">
+                        Generating an entire config entity with Drupal Console is also really easy! Just type in your
+                        module, and the entity name. Not only does it generate the entity, but also the schema, routing,
+                        interface, forms and the list builder too!
+                    </aside>
+                </section>
+                <section>
+                    <h2>Get Drupal Console</h2>
+                    <p>drupalconsole.com</p>
+                    <p>https://www.drupal.org/project/console</p>
+                    <aside class="notes">
+                        Drupal Console is open source and you can download it from drupalconsole.com or D.O.
+                    </aside>
+                </section>
+            </section>
+            <section>
+                <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
                     <h1>Porting the Flagging Entity</h1>
                 </section>
                 <section>
@@ -542,10 +602,7 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
                     <h2>ContentEntityBase</h2>
                     <div>Best for user-created entities</div>
                     <div>Fields defined by overloading <code>baseFieldDefinitions()</code></div>
-                    <div>Define DB table with <code>hook_schema()</code></div>
-                </section>
-                <section>
-                    <img src="images/flaggingRelationships.png" />
+                    <div>No need to use <code>hook_schema()</code></div>
                 </section>
                 <section>
                     <h2>Flaggings are <em>Weird</em></h2>
@@ -585,6 +642,7 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
                     <h2>FlagService</h2>
                     <div>Plain Old PHP Object (POPO)</div>
                     <div>Registered container-wide with flag.services.yml</div>
+                    <code>$drupal generate:service</code>
                 </section>
                 <section>
                     <h2>Flagging and Unflagging</h2>
@@ -782,16 +840,26 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
                     <h2>Move out of the sandbox fast.</h2>
                 </section>
                 <section>
-                    <h2>Things are easier now, use Example Module</h2>
+                    <h2>Things are easier now.</h2>
+                    <img src="images/thingsAreEasierNow.png">
                 </section>
             </section>
             <section>
                 <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
                     <h2>Special Thanks To</h2>
                     <div>
-                        @timplunkett, @larowlan, @YesCT, @davereid, @wizonesolutions, Lauren Shey, and Blink Reaction.
+                        @timplunkett, @larowlan, @YesCT, @davereid, @wizonesolutions, Lauren Shey, and
                     </div>
+                    <div>&nbsp;</div>
+                    <img src="images/blinkReactionLogo.png" />
+                    <div class="fragment">(We're hiring!)</div>
                 </section>
+            </section>
+            <section>
+                <h2>Come Sprint with Us!</h2>
+                <p>Learn and contribute to Drupal Core</p>
+                <p class="fragment">Mentors will help you setup and find issues</p>
+                <p class="fragment">UIC Student Center East Tower, Room 605</p>
             </section>
             <section>
                 <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
