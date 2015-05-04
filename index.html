@@ -279,10 +279,11 @@
 
     public function setGlobal($isGlobal);
 
-    }
+    ...
 </code></pre>
                     </div>Best Practice OOP<br>
                     <div>Sketch out what the class does</div>
+                    <div>Separates documentation and code</div>
                 </section>
                 <section class="" data-id="79aaf1914acbbaa6830c63b8f4922886">
                     <h2>Configuration Entities</h2>
@@ -293,7 +294,7 @@
                 <section class="" data-id="815140d3e93d645da2b12cab3f7fd880">
                     <h2>ConfigEntityBase</h2>
                     <div>
-                        <pre><code>class Flag extends ConfigEntityBase implements FlagInterface</code></pre>
+                        <pre><code>class Flag extends ConfigEntityBundleBase implements FlagInterface</code></pre>
                     </div>Foundation class for config entities<br>
                     <div>Does all the Drupal work, so you can do <i>your</i>&nbsp;work</div>
                 </section>
@@ -341,7 +342,7 @@
                     <h2>Please use an IDE & Debugger</h2>
                     <div>Yes, really. It's time.</div>
                     <div>Drupal 7 has ~3000 files</div>
-                    <div>Drupal 8 has <em>4 times that many</em></div>
+                    <div>Drupal 8 has <em>5 times that many</em></div>
                 </section>
                 <section class="" data-id="47aa554dbe9bbbed9f8139d1eff34185">
                     <h2>Getters and Setters</h2>
@@ -738,11 +739,16 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
                 <section>
                     <h2>Hooks</h2>
                     <div><code>ModuleHandlerInterface::invokeAll()</code></div>
-                    <div>Module handler injected into FlagService</div>
+                    <div>Inject ModuleHandler into your service</div>
 <pre><code>public function __construct(ModuleHandlerInterface $module_handler) {
     $this->moduleHandler = $module_handler;
 }
 </code></pre>
+                </section>
+                <section>
+                    <h2>Hooks and FlagService</h2>
+                    <div class="fragment">Hooks an assumed necessity, but...</div>
+                    <div class="fragment">...we've haven't needed them <span class="fragment">(yet).</span></div>
                 </section>
             </section>
             <section>
@@ -767,6 +773,12 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
                 </section>
                 <section>
                     <img src="images/github.png" />
+                </section>
+                <section>
+                    <h2>Keeping up with Core</h2>
+                    <div>Start with the latest release</div>
+                    <div class="fragment">Stick with it until you're you're ready to update</div>
+                    <div class="fragment">Avoid developing against HEAD</div>
                 </section>
                 <section>
                     <h2>Ask for Help</h2>
@@ -859,14 +871,13 @@ ConfigEntityBase::set($property_name, $value);</code></pre>
                 <h2>Come Sprint with Us!</h2>
                 <p>Learn and contribute to Drupal Core</p>
                 <p class="fragment">Mentors will help you setup and find issues</p>
-                <p class="fragment">UIC Student Center East Tower, Room 605</p>
+                <p class="fragment">Friday 9am - 6pm, Room 403AB</p>
             </section>
             <section>
                 <section data-background-image="images/flagOnD8-background.png" data-background-size="contain">
                     <h1>Thank you!</h1>
                     <div>@socketwench</div>
                     <div>http://socketwench.github.io/portingFlagToDrupal8</div>
-                    <div>Leave feedback: https://joind.in/13806</div>
                 </section>
             </section>
             </div>
