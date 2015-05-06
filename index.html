@@ -22,6 +22,9 @@
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
+        <!-- Custom styles -->
+        <link rel="stylesheet" href="css/portingFlagToDrupal8.css">
+
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
 			if( window.location.search.match( /print-pdf/gi ) ) {
@@ -36,6 +39,8 @@
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
+
+
 	</head>
 
 	<body>
@@ -206,8 +211,8 @@
                     <div>Entity support was refactored in</div>
                     <div>OOP was used, but...</div>
                 </section>
-                <section>
-                    <img src="images/theBlob.jpg" />
+                <section data-state="blob-slide" data-transition="fade" data-background-transition="fade">
+                    <img src="images/theBlob.png" />
                 </section>
                 <section class="" data-id="cc5e3b99b3f344d317d71c9fda057f31">
                     <h2>How PHP4 Classes look today</h2>
